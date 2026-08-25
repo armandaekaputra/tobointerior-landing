@@ -130,20 +130,43 @@ Campaign: **"TOBO Interior - Renovasi Kantor Jaksel Tangsel"**
    4–6 minggu) — apakah lanjut jalan apa adanya, coba optimasi lain
    (keyword/creative/landing page), atau pause total dulu sambil evaluasi
    ulang funnel.
-3. Kalau masih 0 konversi meski traffic ke `/konsultasi/` sudah ada,
+3. ~~Audit funnel/copy landing page~~ — **selesai 25 Agu 2026**: CTR iklan
+   4,11% (sehat), tapi 0 konversi + engagement 7 detik di `/konsultasi/`
+   menunjukkan kebocoran terjadi **setelah** klik, bukan di iklan. Root
+   cause dugaan: 5 dari 6 portofolio di homepage adalah proyek institusi
+   (UIN/Kemenag), plus angka Rp100–300 juta disebut eksplisit — kombinasi
+   ini bisa membuat calon klien swasta kecil (target campaign: non-goverment,
+   B2B & B2C personal renov rumah) mengira skala/harga tidak cocok untuk
+   mereka, lalu bounce cepat. **Fix diterapkan 25 Agu 2026** (commit
+   `362a7e8`): angka Rp100–300jt di [index.astro](src/pages/index.astro)
+   sekarang di-scope eksplisit ke "proyek institusi tersebut" (bagian
+   kredibilitas) dan ke "proyek yang mencakup beberapa ruangan sekaligus"
+   (bagian cakupan layanan) — bukan lagi kesan patokan minimum umum.
+   **User memilih tunggu beberapa hari dulu lihat efeknya** sebelum lanjut
+   ke rekomendasi #2 (majukan bukti sosial dari proyek swasta kecil,
+   belum dikerjakan) — cek lagi traffic/engagement `/konsultasi/` pasca
+   25 Agu 2026 di sesi berikutnya.
+4. Kalau masih 0 konversi meski traffic ke `/konsultasi/` sudah ada,
    curigai tahap terakhir funnel: form diisi tapi tombol "Lanjutkan ke
    WhatsApp" tidak diklik, atau WA terbuka tapi pesan tidak jadi dikirim.
-   Rata-rata 7 detik di halaman `/konsultasi/` (lihat temuan 25 Agu)
-   memperkuat dugaan bounce sebelum isi form, bukan drop di tahap WA.
-4. Pertimbangkan link ulang GA4 property ke akun Google Ads — dikonfirmasi
+5. Pertimbangkan link ulang GA4 property ke akun Google Ads — dikonfirmasi
    25 Agu 2026 statusnya benar-benar 0 link (bukan cuma notifikasi lama),
    jadi data atribusi Ads di GA4 saat ini nihil sampai ditautkan ulang.
 
 ## Keterbatasan alat yang sudah ketemu (biar tidak diulang cari tahu)
 
-- **`ads.google.com` diblokir total** untuk Claude in Chrome (navigasi &
-  screenshot/interaksi) — tidak bisa diautomasi, harus selalu minta user
-  screenshot & guide manual.
+- **`ads.google.com` navigasi via Claude in Chrome tidak konsisten** — di
+  sesi 25 Agu 2026, gagal terus-menerus dengan error "Navigation to this
+  domain is not allowed" (sudah dicoba: tab baru, sesi baru, subagent
+  terpisah, setelah ubah setting "Situs yang diizinkan" di app Claude,
+  setelah restart koneksi ekstensi — semua gagal identik, dan terkonfirmasi
+  request-nya tidak pernah sampai ke browser user sama sekali/servernya
+  yang menolak). TAPI di sesi lain pada hari yang sama (`umrah-sendiri`,
+  window & tab Chrome yang sama persis), akses ke `ads.google.com` **berhasil
+  normal**. Penyebab pasti tidak ketemu — kemungkinan pembatasan level
+  server yang di-scope per-sesi/percakapan, bukan per-project atau
+  per-browser. Jangan asumsikan ini "diblokir total selamanya" — coba dulu
+  di sesi baru sebelum langsung minta user screenshot manual.
 - `analytics.google.com` bisa diakses normal via Claude in Chrome.
 - `landing.tobointerior.com` (situs live) diblokir dari Browser pane bawaan
   (`mcp__Claude_Browser__*`) untuk read-tools — test perubahan lewat local
