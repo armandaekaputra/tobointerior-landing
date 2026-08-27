@@ -401,6 +401,57 @@ const faq = [
     </div>
   </section>
 
+  <!-- ══════════ CASE STUDY 2 ══════════ -->
+  <section class="band border-b border-line bg-concrete">
+    <div class="wrap">
+      <p class="eyebrow">Studi kasus</p>
+
+      <h2 class="text-3xl sm:text-4xl">
+        Renovasi interior kantor — Park Regis by Prince Hotel, Menteng
+      </h2>
+      <p class="mt-5 max-w-xl text-lg text-graphite">
+        Ruang kantor swasta di gedung Park Regis by Prince Hotel — meliputi
+        area resepsionis, ruang kerja, dan partisi built-in.
+      </p>
+
+      <div class="mt-10">
+        <p class="font-mono text-xs uppercase tracking-widest text-brass">Sebelum</p>
+        <div class="mt-3 grid gap-4 sm:grid-cols-3">
+          {['parkregis-before-1', 'parkregis-before-2', 'parkregis-before-3'].map((src) => (
+            <figure class="aspect-[4/3] overflow-hidden">
+              <img
+                src={`/images/${src}.jpg`}
+                alt="Kondisi ruang sebelum direnovasi — proyek Park Regis by Prince Hotel"
+                width="1200"
+                height="900"
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
+            </figure>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <p class="font-mono text-xs uppercase tracking-widest text-brass">Sesudah</p>
+        <div class="mt-3 grid gap-4 sm:grid-cols-3">
+          {['parkregis-after-1', 'parkregis-after-2', 'parkregis-after-3'].map((src) => (
+            <figure class="aspect-[4/3] overflow-hidden">
+              <img
+                src={`/images/${src}.jpg`}
+                alt="Hasil akhir ruang kantor setelah direnovasi — proyek Park Regis by Prince Hotel"
+                width="1200"
+                height="900"
+                loading="lazy"
+                class="h-full w-full object-cover"
+              />
+            </figure>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════ PORTOFOLIO ══════════ -->
   <section id="portofolio-proyek" class="band border-t border-line">
     <div class="wrap">
@@ -414,6 +465,11 @@ const faq = [
 
       <div class="mt-10 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
         {[
+          {
+            src: '/images/portfolio-parkregis.jpg',
+            judul: 'Renovasi Interior Kantor — Park Regis by Prince Hotel',
+            sub: 'Park Regis by Prince Hotel, Menteng',
+          },
           {
             src: '/images/portfolio-mushola.jpg',
             judul: 'Mushola Fakultas Sains dan Teknologi UIN',
