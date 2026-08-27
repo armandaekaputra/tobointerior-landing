@@ -31,16 +31,32 @@ traffic dari campaign Google Ads.
   nama itu, itu histori, remote sudah diupdate ke nama baru.)
 - Folder lokal: `/Users/arman/Documents/tobo-interior-lp` (di-rename dari
   `tobo-lp` oleh user — nama folder lokal tidak memengaruhi nama repo GitHub).
-- **Auto-deploy webhook aktif sejak 27 Agu 2026** — Coolify → GitHub
-  (`.../webhooks/source/github/events/manual`, event `push`). Sebelumnya
-  toggle "Auto Deploy" di Coolify sudah nyala tapi TIDAK cukup — Coolify
-  (non-GitHub-App integration) butuh webhook GitHub didaftarkan manual
-  lewat repo Settings > Webhooks, pakai Payload URL & Secret dari halaman
-  Coolify: Application > Configuration > Advanced > Webhooks. Gotcha:
-  halaman GitHub Settings itu 404 kalau akun yang login bukan **Admin** di
-  repo (collaborator biasa tidak cukup) — pastikan login sebagai
-  `armandaekaputra` (owner), bukan akun lain. Verifikasi dari CLI:
-  `gh api repos/armandaekaputra/tobointerior-landing/hooks`.
+- **Auto-deploy webhook DIKONFIRMASI JALAN sejak 27 Agu 2026** — GitHub push
+  → Coolify webhook → build otomatis (dibuktikan lewat tab Deployments
+  Coolify: entri bertanda "Webhook", bukan "Manual", status Success).
+  Dua langkah yang dulu kurang, dua-duanya wajib:
+  1. **Daftarkan webhook di GitHub** — toggle "Auto Deploy" di Coolify
+     (Application > Configuration > Advanced) TIDAK otomatis membuat
+     webhook di GitHub. Harus manual: copy Payload URL + Secret dari
+     Coolify (Application > Configuration > Advanced > Webhooks, field
+     "GitHub"), lalu tambahkan di GitHub repo Settings > Webhooks > Add
+     webhook (Content type `application/json`, event `push`). Gotcha:
+     halaman GitHub Settings itu 404 kalau akun yang login bukan **Admin**
+     di repo (collaborator biasa tidak cukup) — login sebagai
+     `armandaekaputra` (owner).
+  2. **Cocokkan nama repo di Coolify** — tab **Git Source** di Coolify
+     punya field "Repository" terpisah dari webhook, dan ini sempat masih
+     tertulis nama LAMA `armandaekaputra/tobo-landing` (belum ke-update
+     otomatis setelah repo di-rename ke `tobointerior-landing`). Selama
+     field ini tidak cocok persis, Coolify menerima webhook (respons 200)
+     tapi diam-diam skip dengan pesan "Nothing to do. No applications
+     found with deploy key set..." — harus diedit manual ke
+     `armandaekaputra/tobointerior-landing` lalu Save.
+  Cara debug webhook dari CLI (baca response body, bukan cuma status
+  code — status 200 tidak berarti deploy benar-benar jalan):
+  `gh api repos/armandaekaputra/tobointerior-landing/hooks` (list hook),
+  lalu `.../hooks/<id>/deliveries` dan `.../deliveries/<delivery_id>`
+  untuk lihat `response.payload` aslinya.
 
 ## Alur konversi (tanpa backend)
 
