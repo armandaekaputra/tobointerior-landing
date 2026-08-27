@@ -25,13 +25,22 @@ traffic dari campaign Google Ads.
 - **Domain**: `landing.tobointerior.com` (subdomain). DNS dikelola di
   **Hostinger hPanel** (A record ke IP VPS). Domain utama `tobointerior.com`
   adalah situs terpisah (web utama, tidak dikelola di sesi/project ini).
-- **Repo GitHub**: `armandaekaputra/tobointerior-landing` — **private**.
+- **Repo GitHub**: `armandaekaputra/tobointerior-landing` — **public**
+  (dikonfirmasi 27 Agu 2026 via `gh api`, bukan private seperti catatan lama).
   (Sempat bernama `tobo-landing`, di-rename user; kalau ada referensi lama ke
   nama itu, itu histori, remote sudah diupdate ke nama baru.)
 - Folder lokal: `/Users/arman/Documents/tobo-interior-lp` (di-rename dari
   `tobo-lp` oleh user — nama folder lokal tidak memengaruhi nama repo GitHub).
-- Redeploy = user klik "Redeploy" manual di dashboard Coolify setelah push ke
-  `main`. Tidak ada auto-deploy webhook yang dikonfirmasi aktif.
+- **Auto-deploy webhook aktif sejak 27 Agu 2026** — Coolify → GitHub
+  (`.../webhooks/source/github/events/manual`, event `push`). Sebelumnya
+  toggle "Auto Deploy" di Coolify sudah nyala tapi TIDAK cukup — Coolify
+  (non-GitHub-App integration) butuh webhook GitHub didaftarkan manual
+  lewat repo Settings > Webhooks, pakai Payload URL & Secret dari halaman
+  Coolify: Application > Configuration > Advanced > Webhooks. Gotcha:
+  halaman GitHub Settings itu 404 kalau akun yang login bukan **Admin** di
+  repo (collaborator biasa tidak cukup) — pastikan login sebagai
+  `armandaekaputra` (owner), bukan akun lain. Verifikasi dari CLI:
+  `gh api repos/armandaekaputra/tobointerior-landing/hooks`.
 
 ## Alur konversi (tanpa backend)
 
