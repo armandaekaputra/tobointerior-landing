@@ -44,8 +44,7 @@ const parkRegisRooms = [
   },
 ];
 
-const gridColsClass = (n: number) =>
-  n >= 3 ? 'sm:grid-cols-3' : n === 2 ? 'sm:grid-cols-2' : 'max-w-sm';
+const gridColsClass = (n: number) => (n >= 3 ? 'sm:grid-cols-3' : 'sm:grid-cols-2');
 
 const masalah = [
   {
@@ -418,7 +417,33 @@ const faq = [
         </div>
       ))}
 
-      <blockquote class="mt-14 max-w-3xl border-l-2 border-brass py-1 pl-6">
+      <div class="mt-14 grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+        {[
+          {
+            h: 'Kondisi awal',
+            isi: 'Unit kantor bekas penyewa sebelumnya, masih penuh furniture dan dokumen lama, belum siap difungsikan.',
+          },
+          {
+            h: 'Kebutuhan klien',
+            isi: 'Ruang kerja profesional dengan area resepsionis, lounge tunggu tamu, dan ruang meeting yang representatif untuk menerima klien maupun mitra.',
+          },
+          {
+            h: 'Lingkup pekerjaan',
+            isi: 'Reception desk custom, TV wall dan lounge area, ruang meeting, partisi, lantai, pencahayaan, hingga furniture built-in.',
+          },
+          {
+            h: 'Hasil',
+            isi: 'Kantor siap pakai dengan area resepsionis, lounge, dan ruang meeting yang representatif di gedung Park Regis by Prince Hotel, Menteng.',
+          },
+        ].map((s) => (
+          <div class="bg-concrete p-6">
+            <h3 class="font-mono text-xs uppercase tracking-widest text-brass">{s.h}</h3>
+            <p class="mt-3 text-sm text-graphite">{s.isi}</p>
+          </div>
+        ))}
+      </div>
+
+      <blockquote class="mt-10 max-w-3xl border-l-2 border-brass py-1 pl-6">
         <p class="text-lg text-graphite">
           &ldquo;Kali ini skalanya lebih besar — lobi, dua ruang meeting,
           sampai ruang direktur, semua jalan bersamaan. Saya tetap bisa
