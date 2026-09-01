@@ -2,6 +2,37 @@
 import Base from '../layouts/Base.astro';
 import WaButton from '../components/WaButton.astro';
 
+const parkRegisRooms = [
+  {
+    nama: 'Lobi & Resepsionis',
+    before: ['parkregis-lobi-before-1', 'parkregis-lobi-before-2'],
+    after: ['parkregis-lobi-after-1', 'parkregis-lobi-after-2', 'parkregis-lobi-after-3'],
+  },
+  {
+    nama: 'Ruang Meeting 1',
+    before: ['parkregis-meeting1-before-1'],
+    after: ['parkregis-meeting1-after-1', 'parkregis-meeting1-after-2'],
+  },
+  {
+    nama: 'Ruang Meeting 2',
+    before: ['parkregis-meeting2-before-1'],
+    after: ['parkregis-meeting2-after-1', 'parkregis-meeting2-after-2'],
+  },
+  {
+    nama: 'Ruang Direktur',
+    before: ['parkregis-direktur-before-1'],
+    after: ['parkregis-direktur-after-1', 'parkregis-direktur-after-2'],
+  },
+  {
+    nama: 'Detail & Furnitur Built-in',
+    before: ['parkregis-item-before-1', 'parkregis-item-before-2'],
+    after: ['parkregis-item-after-1', 'parkregis-item-after-2'],
+  },
+];
+
+const gridColsClass = (n: number) =>
+  n >= 3 ? 'sm:grid-cols-3' : n === 2 ? 'sm:grid-cols-2' : 'max-w-sm';
+
 const masalah = [
   {
     judul: 'Tidak tahu apa yang terjadi di lokasi',
@@ -323,6 +354,76 @@ const faq = [
       <p class="eyebrow">Studi kasus</p>
 
       <h2 class="text-3xl sm:text-4xl">
+        Renovasi interior kantor — Park Regis by Prince Hotel, Menteng
+      </h2>
+      <p class="mt-5 max-w-xl text-lg text-graphite">
+        Ruang kantor swasta di gedung Park Regis by Prince Hotel — meliputi
+        lobi resepsionis, dua ruang meeting, ruang direktur, hingga detail
+        furnitur built-in.
+      </p>
+
+      {parkRegisRooms.map((room) => (
+        <div class="mt-14 border-t border-line pt-10 first:mt-10">
+          <h3 class="text-xl font-semibold">{room.nama}</h3>
+
+          <div class="mt-6">
+            <p class="font-mono text-xs uppercase tracking-widest text-brass">Sebelum</p>
+            <div class={`mt-3 grid gap-4 ${gridColsClass(room.before.length)}`}>
+              {room.before.map((src) => (
+                <figure class="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={`/images/${src}.jpg`}
+                    alt={`Kondisi ${room.nama} sebelum direnovasi — proyek Park Regis by Prince Hotel`}
+                    width="1200"
+                    height="900"
+                    loading="lazy"
+                    class="h-full w-full object-cover"
+                  />
+                </figure>
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <p class="font-mono text-xs uppercase tracking-widest text-brass">Sesudah</p>
+            <div class={`mt-3 grid gap-4 ${gridColsClass(room.after.length)}`}>
+              {room.after.map((src) => (
+                <figure class="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={`/images/${src}.jpg`}
+                    alt={`Hasil akhir ${room.nama} setelah direnovasi — proyek Park Regis by Prince Hotel`}
+                    width="1200"
+                    height="900"
+                    loading="lazy"
+                    class="h-full w-full object-cover"
+                  />
+                </figure>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+
+      <blockquote class="mt-14 max-w-3xl border-l-2 border-brass py-1 pl-6">
+        <p class="text-lg text-graphite">
+          &ldquo;Kali ini skalanya lebih besar — lobi, dua ruang meeting,
+          sampai ruang direktur, semua jalan bersamaan. Saya tetap bisa
+          pantau tiap ruangan dari laporan harian, jadi tidak ada yang luput
+          meski banyak titik pekerjaan sekaligus.&rdquo;
+        </p>
+        <footer class="mt-4 font-mono text-xs uppercase tracking-widest text-graphite">
+          — ERPS, klien Renovasi Kantor Park Regis by Prince Hotel
+        </footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ══════════ CASE STUDY 2 ══════════ -->
+  <section class="band border-b border-line bg-concrete">
+    <div class="wrap">
+      <p class="eyebrow">Studi kasus</p>
+
+      <h2 class="text-3xl sm:text-4xl">
         Renovasi ruang kantor — Tanah Kusir, Jakarta Selatan
       </h2>
 
@@ -398,57 +499,6 @@ const faq = [
           — ERPS, klien Renovasi Ruang Kerja &amp; Meeting Room
         </footer>
       </blockquote>
-    </div>
-  </section>
-
-  <!-- ══════════ CASE STUDY 2 ══════════ -->
-  <section class="band border-b border-line bg-concrete">
-    <div class="wrap">
-      <p class="eyebrow">Studi kasus</p>
-
-      <h2 class="text-3xl sm:text-4xl">
-        Renovasi interior kantor — Park Regis by Prince Hotel, Menteng
-      </h2>
-      <p class="mt-5 max-w-xl text-lg text-graphite">
-        Ruang kantor swasta di gedung Park Regis by Prince Hotel — meliputi
-        area resepsionis, ruang kerja, dan partisi built-in.
-      </p>
-
-      <div class="mt-10">
-        <p class="font-mono text-xs uppercase tracking-widest text-brass">Sebelum</p>
-        <div class="mt-3 grid gap-4 sm:grid-cols-3">
-          {['parkregis-before-1', 'parkregis-before-2', 'parkregis-before-3'].map((src) => (
-            <figure class="aspect-[4/3] overflow-hidden">
-              <img
-                src={`/images/${src}.jpg`}
-                alt="Kondisi ruang sebelum direnovasi — proyek Park Regis by Prince Hotel"
-                width="1200"
-                height="900"
-                loading="lazy"
-                class="h-full w-full object-cover"
-              />
-            </figure>
-          ))}
-        </div>
-      </div>
-
-      <div class="mt-8">
-        <p class="font-mono text-xs uppercase tracking-widest text-brass">Sesudah</p>
-        <div class="mt-3 grid gap-4 sm:grid-cols-3">
-          {['parkregis-after-1', 'parkregis-after-2', 'parkregis-after-3'].map((src) => (
-            <figure class="aspect-[4/3] overflow-hidden">
-              <img
-                src={`/images/${src}.jpg`}
-                alt="Hasil akhir ruang kantor setelah direnovasi — proyek Park Regis by Prince Hotel"
-                width="1200"
-                height="900"
-                loading="lazy"
-                class="h-full w-full object-cover"
-              />
-            </figure>
-          ))}
-        </div>
-      </div>
     </div>
   </section>
 
