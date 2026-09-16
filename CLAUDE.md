@@ -144,6 +144,18 @@ Campaign: **"TOBO Interior - Renovasi Kantor Jaksel Tangsel"**
   total sejak pause**, sejalan dengan temuan GA4 di atas (traffic bersih
   pasca-pause minim & engagement rendah).
 
+- **16 Sep 2026** — cek ulang GA4 (filter hostname sama, periode kustom
+  **25 Agu–16 Sep 2026**, persis sejak fix harga Rp100-300jt + tambahan
+  case study Park Regis): total 57 tampilan, 36 pengguna. `/konsultasi/`
+  naik jadi **7 tampilan, 6 pengguna bersih** (dari cuma 1 pengguna bersih
+  di periode sebelumnya), rata-rata waktu engagement naik dari 7 dtk jadi
+  **10 dtk**. Arahnya positif tapi belum ideal (form 5 field, 10 dtk masih
+  tergolong singkat) — kemungkinan masih ada bounce sebelum isi form
+  selesai, cuma sudah lebih baik dari sebelumnya. Konversi Ads di periode
+  yang sama belum dicek ulang di sesi ini (`ads.google.com` masih
+  diblokir untuk navigasi otomatis Claude di sesi ini juga — konsisten
+  dengan sifatnya yang tidak bisa diprediksi per sesi).
+
 ### Yang masih harus dilanjutkan di sesi berikutnya
 
 1. ~~Terapkan filter GA4 "Nama Host sama persis
