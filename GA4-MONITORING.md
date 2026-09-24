@@ -59,6 +59,7 @@ Dari tabel hasil filter, fokus ke baris `/konsultasi/` dibanding baris `/`:
 |---|---|---|---|---|
 | 28 Jul–24 Agu 2026 | 3 | ~1 (2 dari 3 kontaminasi pre-pause 16 Agu) | 7 dtk | Baseline sebelum fix copy |
 | 25 Agu–16 Sep 2026 | 7 | 6 | 10 dtk | Setelah fix harga Rp100-300jt (commit `362a7e8`) + tambahan case study Park Regis |
+| 17–24 Sep 2026 | 2 | 2 | 2 dtk | Turun dari periode sebelumnya — 2 dtk terlalu singkat untuk isi form 5 field, indikasi bounce cepat lagi. Total situs (semua halaman) 11 tampilan/9 pengguna di periode ini, jadi traffic keseluruhan juga menurun dari 39 tampilan/28 hari sebelumnya, bukan cuma proporsi `/konsultasi/` yang turun. |
 
 **Cara isi baris baru**: ulangi langkah filter di atas dengan rentang
 tanggal dari tanggal terakhir dicek sampai hari ini, catat 3 angka
